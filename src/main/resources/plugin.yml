@@ -1,0 +1,4 @@
+name: ArenaAPI
+version: '${project.version}'
+main: com.donbaguette.arenaapi.ArenaAPI
+api-version: 1.19
