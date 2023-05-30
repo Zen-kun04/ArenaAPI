@@ -3,6 +3,7 @@ package com.donbaguette.arenaapi.managers;
 import com.donbaguette.arenaapi.ArenaAPI;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,26 +12,24 @@ public class ConfigManager {
 
     private File file;
     private FileConfiguration configuration;
-    private ArenaAPI arenaAPI;
+    private JavaPlugin arenaAPI;
 
-    public ConfigManager(ArenaAPI arenaAPI) {
-        this.arenaAPI = arenaAPI;
+    public ConfigManager(JavaPlugin plugin) {
+        this.arenaAPI = plugin;
     }
 
     public FileConfiguration getConfig() {
         return this.configuration;
     }
 
-    public void createConfig() {
-        this.file = new File(arenaAPI.getDataFolder(), "arenas.yml");
+    public void createConfig(JavaPlugin plugin) {
+        this.file = new File(plugin.getDataFolder(), "arenas.yml");
         if(!this.file.exists()) {
             this.file.getParentFile().mkdirs();
-            this.arenaAPI.saveResource("arenas.yml", false);
+            plugin.saveResource("arenas.yml", false);
         }
 
-        this.configuration = new YamlConfiguration();
-
-        YamlConfiguration.loadConfiguration(this.file);
+        this.configuration = YamlConfiguration.loadConfiguration(this.file);
 
     }
 

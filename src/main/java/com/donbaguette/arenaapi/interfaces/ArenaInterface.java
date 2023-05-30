@@ -13,5 +13,15 @@ public interface ArenaInterface {
     public void addPlayer(Player player);
     public void removePlayer(Player player);
     public boolean isPlayer(Player player);
+    public String getArenaID();
+    public String getArenaName();
+    public void setArenaID(String id);
+    public void setArenaName(String name);
+    public int getMinPlayers();
+    public int getMaxPlayers();
+    public int getMinStartPlayers();
+    public void setMinPlayers(int min);
+    public void setMaxPlayers(int max);
+    public void setMinStartPlayers(int minStart);
 
 }
